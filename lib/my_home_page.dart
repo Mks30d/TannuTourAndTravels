@@ -12,6 +12,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column(children: [Header(), AnimatedSection()]));
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [Header(), SizedBox(height: 20), AnimatedSection()],
+        ),
+      ),
+    );
   }
 }

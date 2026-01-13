@@ -22,8 +22,6 @@ class _AnimatedSectionState extends State<AnimatedSection>
       vsync: this,
     );
 
-    // Create a curved animation that goes from -50 to 50 (pixels offset)
-    // Using easeInOut for smooth acceleration and deceleration
     _slideAnimation = Tween<double>(begin: -100.0, end: 100.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
@@ -40,25 +38,37 @@ class _AnimatedSectionState extends State<AnimatedSection>
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+
     return Center(
       child: Column(
         children: [
           Stack(
             children: [
               Positioned(
-                top: 85,
-                left: 70,
-                child: Container(height: 15, width: 280, color: Colors.yellow),
+                top: deviceWidth * 0.11,
+                left: deviceWidth * 0.08,
+                child: Container(
+                  height: deviceWidth * 0.025,
+                  width: deviceWidth * 0.39,
+                  color: const Color(0xFFFFC400),
+                ),
               ),
               Column(
                 children: [
                   Text(
                     "Lifelong memories just a",
-                    style: TextStyle(fontSize: 38, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                      fontSize: deviceWidth * 0.05,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   Text(
                     "few seconds away",
-                    style: TextStyle(fontSize: 38, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                      fontSize: deviceWidth * 0.05,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ],
               ),
@@ -69,27 +79,19 @@ class _AnimatedSectionState extends State<AnimatedSection>
             "Let's start your journey with us, your dream will come true",
             style: TextStyle(
               color: Colors.black.withValues(alpha: 0.5),
-              fontSize: 14,
+              fontSize: deviceWidth * 0.02,
               fontWeight: FontWeight.w600,
             ),
           ),
 
-          SizedBox(height: 18),
+          Stack(
+            children: [
+              Image.asset("assets/images/bg.png", fit: BoxFit.cover),
 
-          Container(
-            width: double.infinity,
-            height: 300,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/headerMountain.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Column(
-              children: [
-                Spacer(),
-                // Animated image with smooth left-right movement
-                AnimatedBuilder(
+              Positioned(
+                top: deviceWidth * 0.2,
+                left: deviceWidth * 0.3,
+                child: AnimatedBuilder(
                   animation: _slideAnimation,
                   builder: (context, child) {
                     return Transform.translate(
@@ -98,17 +100,18 @@ class _AnimatedSectionState extends State<AnimatedSection>
                     );
                   },
                   child: SizedBox(
-                    height: 150,
+                    height: deviceWidth * 0.18,
                     child: Image.asset(
-                      "assets/images/van.jpg",
+                      "assets/images/car.png",
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                SizedBox(height: 50),
-              ],
-            ),
+              ),
+            ],
           ),
+
+          SizedBox(height: 500),
         ],
       ),
     );

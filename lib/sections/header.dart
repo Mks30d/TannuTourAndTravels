@@ -37,6 +37,7 @@ class Header extends StatelessWidget {
                 "Tannu Tour And Travels",
                 style: TextStyle(
                   fontSize: 38,
+                  // fontSize: deviceWidth * 0.03,
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
                 ),
@@ -46,6 +47,7 @@ class Header extends StatelessWidget {
                 "Your Trusted Partner for Tours & Travel",
                 style: TextStyle(
                   fontSize: 15,
+                  // fontSize: deviceWidth * 0.012,
                   color: Colors.white.withValues(alpha: 0.8),
                 ),
               ),
