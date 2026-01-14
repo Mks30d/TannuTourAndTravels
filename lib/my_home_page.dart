@@ -22,6 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
             AnimatedSection(),
             SizedBox(height: 20),
             OurServices(),
+            SizedBox(height: 20),
           ],
         ),
       ),
