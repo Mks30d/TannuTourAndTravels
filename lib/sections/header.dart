@@ -36,7 +36,7 @@ class Header extends StatelessWidget {
               Text(
                 "Tannu Tour And Travels",
                 style: TextStyle(
-                  fontSize: 38,
+                  fontSize: deviceWidth < 460 ? 30 : 38,
                   // fontSize: deviceWidth * 0.03,
                   fontWeight: FontWeight.w500,
                   color: Colors.white,

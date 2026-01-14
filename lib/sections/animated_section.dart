@@ -110,8 +110,6 @@ class _AnimatedSectionState extends State<AnimatedSection>
               ),
             ],
           ),
-
-          SizedBox(height: 500),
         ],
       ),
     );
