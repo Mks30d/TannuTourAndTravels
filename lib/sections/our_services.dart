@@ -5,7 +5,7 @@ class OurServices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double deviceWidth = MediaQuery.of(context).size.width;
+    // double deviceWidth = MediaQuery.of(context).size.width;
 
     return Column(
       children: [
@@ -26,8 +26,8 @@ class OurServices extends StatelessWidget {
         SizedBox(height: 22),
 
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
+          spacing: 15,
+          runSpacing: 15,
           alignment: WrapAlignment.center,
           children: [
             carCard(
@@ -51,11 +51,11 @@ class OurServices extends StatelessWidget {
           ],
         ),
 
-        SizedBox(height: 8),
+        SizedBox(height: 22),
 
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
+          spacing: 15,
+          runSpacing: 15,
           alignment: WrapAlignment.center,
           children: [
             carCard(
@@ -96,9 +96,16 @@ class OurServices extends StatelessWidget {
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.amber,
+        // color: Colors.amber,
         borderRadius: BorderRadius.circular(15),
-        boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(3, 3))],
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xffb4b4b4),
+            spreadRadius: 1,
+            blurRadius: 3,
+            offset: Offset(2, 3),
+          ),
+        ],
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),

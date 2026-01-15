@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tannu_tour_and_travels/sections/animated_section.dart';
 import 'package:tannu_tour_and_travels/sections/header.dart';
+import 'package:tannu_tour_and_travels/sections/india_map_section.dart';
 import 'package:tannu_tour_and_travels/sections/our_services.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -22,6 +23,8 @@ class _MyHomePageState extends State<MyHomePage> {
             AnimatedSection(),
             SizedBox(height: 20),
             OurServices(),
+            SizedBox(height: 20),
+            IndiaMapSection(),
             SizedBox(height: 20),
           ],
         ),
