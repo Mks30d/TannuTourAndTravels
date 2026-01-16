@@ -138,11 +138,12 @@ class IndiaMapSection extends StatelessWidget {
             padding: EdgeInsets.all(8),
             color: Colors.blueAccent,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "Available 24/7 for Bookings",
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.5),
+                    color: Colors.white.withValues(alpha: 0.7),
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),
@@ -150,7 +151,7 @@ class IndiaMapSection extends StatelessWidget {
                 Text(
                   "+91 9876543210",
                   style: TextStyle(
-                    color: Colors.grey.withValues(alpha: 0.5),
+                    color: Colors.white.withValues(alpha: 0.7),
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),
@@ -158,7 +159,7 @@ class IndiaMapSection extends StatelessWidget {
                 Text(
                   "Call us anytime, anywhere in India",
                   style: TextStyle(
-                    color: Colors.grey.withValues(alpha: 0.5),
+                    color: Colors.white.withValues(alpha: 0.7),
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),
