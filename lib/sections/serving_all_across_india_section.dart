@@ -41,83 +41,108 @@ class _ServingAllAcrossIndiaSectionState
     'West Bengal',
   ];
 
+  // Breakpoints for responsive design
+  static const double mobileBreakpoint = 600;
+  static const double tabletBreakpoint = 900;
+
   @override
   Widget build(BuildContext context) {
-    double deviceWidth = MediaQuery.of(context).size.width;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final double screenWidth = constraints.maxWidth;
+        final bool isMobile = screenWidth < mobileBreakpoint;
+        final bool isTablet =
+            screenWidth >= mobileBreakpoint && screenWidth < tabletBreakpoint;
+        final bool isDesktop = screenWidth >= tabletBreakpoint;
 
-    return Container(
-      color: Colors.grey.withValues(alpha: 0.1),
-      child: Column(
-        children: [
-          SizedBox(height: 11),
-          Container(
-            margin: EdgeInsets.all(11),
-            child: Column(
-              children: [
-                Text(
-                  "Serving All Across India",
-                  style: TextStyle(
-                    // fontSize: MediaQuery.of(context).size.width * 0.04,
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                  ),
+        // Responsive values
+        final double horizontalMargin = isMobile ? 16 : (isTablet ? 32 : 60);
+        final double titleFontSize = isMobile ? 24 : (isTablet ? 30 : 35);
+        final double subtitleFontSize = isMobile ? 14 : 16;
+        final double sectionSpacing = isMobile ? 20 : 30;
+
+        return Container(
+          color: Colors.grey.withValues(alpha: 0.1),
+          child: Column(
+            children: [
+              SizedBox(height: 11),
+              Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: horizontalMargin,
+                  vertical: 11,
                 ),
-                SizedBox(height: 6),
-
-                Text(
-                  "From Kashmir to Kanyakumari, Kutch to Kohima - Tannu Tour and Travels provides reliable transportation services throughout India",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black.withValues(alpha: 0.9),
-                    fontSize: 16,
-                    // fontSize: MediaQuery.of(context).size.width * 0.025,
-                    fontWeight: FontWeight.w500,
-                  ),
+                child: Column(
+                  children: [
+                    Text(
+                      "Serving All Across India",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: titleFontSize,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 6),
+                    Text(
+                      "From Kashmir to Kanyakumari, Kutch to Kohima - Tannu Tour and Travels provides reliable transportation services throughout India",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black.withValues(alpha: 0.9),
+                        fontSize: subtitleFontSize,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
                 ),
-                // Text(
-                //   "transportation services throughout India",
-                //   style: TextStyle(
-                //     color: Colors.black.withValues(alpha: 0.8),
-                //     fontSize: MediaQuery.of(context).size.width * 0.035,
-                //     fontWeight: FontWeight.w500,
-                //   ),
-                // ),
-              ],
-            ),
+              ),
+
+              SizedBox(height: sectionSpacing),
+
+              Container(
+                height: isDesktop ? 665 : null,
+                margin: EdgeInsets.symmetric(horizontal: horizontalMargin),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(isMobile ? 16 : 22),
+                ),
+                child: isDesktop
+                    ? Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: _buildMapSection(isMobile, isTablet)),
+                          Expanded(
+                            child: _buildStateSection(
+                              isMobile,
+                              isTablet,
+                              isDesktop,
+                            ),
+                          ),
+                        ],
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          _buildMapSection(isMobile, isTablet),
+                          _buildStateSection(isMobile, isTablet, isDesktop),
+                        ],
+                      ),
+              ),
+
+              SizedBox(height: sectionSpacing),
+            ],
           ),
-
-          SizedBox(height: 30),
-
-          Container(
-            height: deviceWidth < 915 ? null : 650,
-            margin: EdgeInsets.fromLTRB(60, 0, 60, 0),
-            decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 1),
-              borderRadius: BorderRadius.circular(22),
-            ),
-            child: MediaQuery.of(context).size.width < 815
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [mapSection(), stateSection()],
-                  )
-                : Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(child: mapSection()),
-
-                      Expanded(child: stateSection()),
-                    ],
-                  ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  // =================== Sub-Widgets ====================
-  dynamic mapSection() {
+  // =================== Map Section ====================
+  Widget _buildMapSection(bool isMobile, bool isTablet) {
+    final double padding = isMobile ? 20 : (isTablet ? 28 : 35);
+    final double cardTitleSize = isMobile ? 16 : 20;
+    final double cardSubtitleSize = isMobile ? 10 : 12;
+
     return ClipRRect(
-      borderRadius: BorderRadius.circular(22),
+      borderRadius: BorderRadius.circular(isMobile ? 16 : 22),
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -126,32 +151,46 @@ class _ServingAllAcrossIndiaSectionState
           ),
         ),
         child: Container(
-          padding: EdgeInsets.all(35),
+          padding: EdgeInsets.all(padding),
           decoration: BoxDecoration(
-            color: Color(0xff144EED).withValues(alpha: 0.85),
-
-            // borderRadius: BorderRadius.circular(50),
+            color: Color(0xff144EED).withValues(alpha: 0.9),
           ),
           child: Column(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(isMobile ? 12 : 18),
                 child: Image.asset(
                   "assets/images/locations/photo(1).jpg",
                   fit: BoxFit.cover,
                 ),
               ),
-
-              SizedBox(height: 18),
-
+              SizedBox(height: isMobile ? 12 : 18),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  expandedCard("28+", "States & UTs"),
-                  SizedBox(width: 11),
-                  expandedCard("500+", "Cities"),
-                  SizedBox(width: 11),
-                  expandedCard("10k+", "Trips"),
+                  _buildExpandedCard(
+                    "28+",
+                    "States & UTs",
+                    cardTitleSize,
+                    cardSubtitleSize,
+                    isMobile,
+                  ),
+                  SizedBox(width: isMobile ? 8 : 11),
+                  _buildExpandedCard(
+                    "500+",
+                    "Cities",
+                    cardTitleSize,
+                    cardSubtitleSize,
+                    isMobile,
+                  ),
+                  SizedBox(width: isMobile ? 8 : 11),
+                  _buildExpandedCard(
+                    "10k+",
+                    "Trips",
+                    cardTitleSize,
+                    cardSubtitleSize,
+                    isMobile,
+                  ),
                 ],
               ),
             ],
@@ -161,13 +200,22 @@ class _ServingAllAcrossIndiaSectionState
     );
   }
 
-  Expanded expandedCard(String title, String subtitle) {
+  Widget _buildExpandedCard(
+    String title,
+    String subtitle,
+    double titleSize,
+    double subtitleSize,
+    bool isMobile,
+  ) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.fromLTRB(8, 11, 8, 11),
+        padding: EdgeInsets.symmetric(
+          horizontal: isMobile ? 6 : 8,
+          vertical: isMobile ? 8 : 11,
+        ),
         decoration: BoxDecoration(
           color: Color.fromARGB(207, 105, 145, 255),
-          borderRadius: BorderRadius.circular(11),
+          borderRadius: BorderRadius.circular(isMobile ? 8 : 11),
         ),
         child: Column(
           children: [
@@ -175,51 +223,65 @@ class _ServingAllAcrossIndiaSectionState
               title,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: titleSize,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            Text(subtitle, style: TextStyle(color: Colors.white, fontSize: 12)),
+            Text(
+              subtitle,
+              style: TextStyle(color: Colors.white, fontSize: subtitleSize),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),
     );
   }
 
-  // ------------------- State Section -------------------
-  dynamic stateSection() {
+  // =================== State Section ====================
+  Widget _buildStateSection(bool isMobile, bool isTablet, bool isDesktop) {
+    final double padding = isMobile ? 16 : 18;
+    final double headerFontSize = isMobile ? 16 : 18;
+    final double bodyFontSize = isMobile ? 13 : 14;
+    final double stateChipFontSize = isMobile ? 12 : 14;
+    final double phoneFontSize = isMobile ? 18 : 22;
+    final double labelFontSize = isMobile ? 11 : 12;
+    final double stateTitleFontSize = isMobile ? 13 : (isTablet ? 14 : 15);
+
     return Container(
-      width: MediaQuery.of(context).size.width < 815 ? null : 300,
-      // color: const Color.fromARGB(79, 0, 187, 212),
-      padding: EdgeInsets.fromLTRB(18, 11, 18, 0),
+      padding: EdgeInsets.all(padding),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Pan-India Coverage Header
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-
             children: [
               Text(
                 "Pan-India Coverage",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: headerFontSize,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-
               SizedBox(height: 8),
-
               Text(
                 "Experience seamless travel across every corner of India with our extensive network and well-maintained fleet.",
                 style: TextStyle(
                   color: Colors.black.withValues(alpha: 0.7),
-                  fontSize: 14,
+                  fontSize: bodyFontSize,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             ],
           ),
 
+          SizedBox(height: isMobile ? 12 : 16),
+
+          // States Container
           Container(
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.all(isMobile ? 12 : 15),
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 214, 231, 255),
               borderRadius: BorderRadius.circular(11),
@@ -229,28 +291,31 @@ class _ServingAllAcrossIndiaSectionState
               children: [
                 Row(
                   children: [
-                    Icon(Icons.pin_drop_outlined),
+                    Icon(Icons.pin_drop_outlined, size: isMobile ? 20 : 24),
                     SizedBox(width: 6),
-                    Text(
-                      "All States & Union Territories We Serve",
-                      style: TextStyle(
-                        color: Colors.black.withValues(alpha: 1),
-                        // fontSize:MediaQuery.of(context).size.width < 880?13 :16,
-                        fontSize: MediaQuery.of(context).size.width * 0.015,
-                        fontWeight: FontWeight.w600,
+                    Expanded(
+                      child: Text(
+                        "All States & Union Territories We Serve",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: stateTitleFontSize,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],
                 ),
-
                 SizedBox(height: 11),
-
                 Wrap(
+                  spacing: 5,
+                  runSpacing: 6,
                   children: indianStates
                       .map(
                         (state) => Container(
-                          margin: EdgeInsets.fromLTRB(0, 3, 5, 3),
-                          padding: EdgeInsets.fromLTRB(11, 6, 11, 6),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: isMobile ? 8 : 11,
+                            vertical: isMobile ? 4 : 6,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20),
@@ -259,7 +324,7 @@ class _ServingAllAcrossIndiaSectionState
                             state,
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 14,
+                              fontSize: stateChipFontSize,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -271,8 +336,14 @@ class _ServingAllAcrossIndiaSectionState
             ),
           ),
 
+          SizedBox(height: isMobile ? 12 : 16),
+
+          // Contact Card
           Container(
-            padding: EdgeInsets.fromLTRB(18, 14, 18, 14),
+            padding: EdgeInsets.symmetric(
+              horizontal: isMobile ? 14 : 18,
+              vertical: isMobile ? 12 : 14,
+            ),
             width: double.infinity,
             decoration: BoxDecoration(
               color: Color(0xff144EED),
@@ -280,14 +351,12 @@ class _ServingAllAcrossIndiaSectionState
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
                   "Available 24/7 for Bookings",
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 0.8),
-                    fontSize: 12,
-                    // fontWeight: FontWeight.w500,
+                    fontSize: labelFontSize,
                   ),
                 ),
                 SizedBox(height: 4),
@@ -295,8 +364,8 @@ class _ServingAllAcrossIndiaSectionState
                   "+91 8239721861",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 22,
-                    // fontWeight: FontWeight.w600,
+                    fontSize: phoneFontSize,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 SizedBox(height: 4),
@@ -304,8 +373,7 @@ class _ServingAllAcrossIndiaSectionState
                   "Call us anytime, anywhere in India",
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 0.8),
-                    fontSize: 12,
-                    // fontWeight: FontWeight.w500,
+                    fontSize: labelFontSize,
                   ),
                 ),
               ],

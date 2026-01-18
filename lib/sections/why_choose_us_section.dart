@@ -27,7 +27,7 @@ class WhyChooseUsSection extends StatelessWidget {
           alignment: WrapAlignment.center,
           children: [
             detailCard(Icons.shield_outlined),
-            detailCard(Icons.badge_outlined),
+            detailCard(Icons.attach_money_outlined),
             detailCard(Icons.thumb_up_outlined),
             detailCard(Icons.watch_later_outlined),
           ],
