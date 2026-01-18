@@ -17,9 +17,9 @@ class OurServices extends StatelessWidget {
         Text(
           "Let's start your journey with us, your dream will come true",
           style: TextStyle(
-            color: Colors.black.withValues(alpha: 0.5),
+            color: Colors.black.withValues(alpha: 0.9),
             fontSize: 16,
-            fontWeight: FontWeight.w600,
+            // fontWeight: FontWeight.w600,
           ),
         ),
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tannu_tour_and_travels/sections/animated_section.dart';
 import 'package:tannu_tour_and_travels/sections/header.dart';
-import 'package:tannu_tour_and_travels/sections/india_map_section.dart';
+import 'package:tannu_tour_and_travels/sections/serving_all_across_india_section.dart';
 import 'package:tannu_tour_and_travels/sections/our_services.dart';
 import 'package:tannu_tour_and_travels/sections/popular_destinations_section.dart';
 import 'package:tannu_tour_and_travels/sections/why_choose_us_section.dart';
@@ -25,8 +25,8 @@ class _MyHomePageState extends State<MyHomePage> {
             AnimatedSection(),
             SizedBox(height: 20),
             OurServices(),
-            SizedBox(height: 20),
-            IndiaMapSection(),
+            SizedBox(height: 30),
+            ServingAllAcrossIndiaSection(),
             SizedBox(height: 20),
             WhyChooseUsSection(),
             SizedBox(height: 20),
