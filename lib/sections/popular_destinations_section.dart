@@ -5,6 +5,15 @@ class PopularDestinationsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> images = [
+      "assets/images/locations/photo(2).jpg",
+      "assets/images/locations/photo(3).jpg",
+      "assets/images/locations/photo(4).jpg",
+      "assets/images/locations/photo(5).jpg",
+      "assets/images/locations/photo(6).jpg",
+      "assets/images/locations/photo(7).jpg",
+    ];
+
     return Column(
       children: [
         Text(
@@ -30,7 +39,37 @@ class PopularDestinationsSection extends StatelessWidget {
               title: "name",
               subtitle: "seats",
               distance: "distance",
-              image: "image",
+              image: images[0],
+            ),
+            destinationCard(
+              title: "name",
+              subtitle: "seats",
+              distance: "distance",
+              image: images[1],
+            ),
+            destinationCard(
+              title: "name",
+              subtitle: "seats",
+              distance: "distance",
+              image: images[2],
+            ),
+            destinationCard(
+              title: "name",
+              subtitle: "seats",
+              distance: "distance",
+              image: images[3],
+            ),
+            destinationCard(
+              title: "name",
+              subtitle: "seats",
+              distance: "distance",
+              image: images[4],
+            ),
+            destinationCard(
+              title: "name",
+              subtitle: "seats",
+              distance: "distance",
+              image: images[5],
             ),
           ],
         ),

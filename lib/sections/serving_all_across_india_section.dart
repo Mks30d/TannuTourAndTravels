@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tannu_tour_and_travels/utils/devices_breakpoints.dart';
 
 class ServingAllAcrossIndiaSection extends StatefulWidget {
   const ServingAllAcrossIndiaSection({super.key});
@@ -40,10 +41,6 @@ class _ServingAllAcrossIndiaSectionState
     'Uttarakhand',
     'West Bengal',
   ];
-
-  // Breakpoints for responsive design
-  static const double mobileBreakpoint = 600;
-  static const double tabletBreakpoint = 900;
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +143,7 @@ class _ServingAllAcrossIndiaSectionState
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/locations/photo(1).jpg'),
+            image: AssetImage('assets/images/locations/indiaMap.jpg'),
             fit: BoxFit.cover,
           ),
         ),
