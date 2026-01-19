@@ -73,23 +73,25 @@ class WhyChooseUsSection extends StatelessWidget {
 
             Wrap(
               alignment: WrapAlignment.center,
+              runSpacing: 11,
+              spacing: 11,
               children: [
-                detailCard(
+                _detailCard(
                   Icons.shield_outlined,
                   contentList[0][0],
                   contentList[0][1],
                 ),
-                detailCard(
+                _detailCard(
                   Icons.attach_money_outlined,
                   contentList[1][0],
                   contentList[1][1],
                 ),
-                detailCard(
+                _detailCard(
                   Icons.thumb_up_outlined,
                   contentList[2][0],
                   contentList[2][1],
                 ),
-                detailCard(
+                _detailCard(
                   Icons.watch_later_outlined,
                   contentList[3][0],
                   contentList[3][1],
@@ -102,10 +104,16 @@ class WhyChooseUsSection extends StatelessWidget {
     );
   }
 
-  Container detailCard(IconData icon, String title, String subtitle) {
+  dynamic _detailCard(IconData icon, String title, String subtitle) {
     return Container(
-      width: 200,
-      padding: EdgeInsets.fromLTRB(18, 11, 18, 0),
+      width: 250,
+      height: 210,
+      padding: EdgeInsets.fromLTRB(18, 11, 18, 11),
+      // constraints: BoxConstraints(minWidth: 300, maxWidth: 400),
+      decoration: BoxDecoration(
+        color: Colors.amber,
+        borderRadius: BorderRadius.circular(11),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
