@@ -114,7 +114,7 @@ class WhyChooseUsSection extends StatelessWidget {
           Icon(icon, color: primaryColor, size: 40),
 
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 11, 0, 2),
+            padding: const EdgeInsets.fromLTRB(0, 18, 0, 2),
             child: Text(
               title,
               style: TextStyle(
