@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tannu_tour_and_travels/utils/colors.dart';
 import 'package:tannu_tour_and_travels/utils/devices_breakpoints.dart';
+import 'package:tannu_tour_and_travels/widgets/my_subtitle.dart';
+import 'package:tannu_tour_and_travels/widgets/my_title.dart';
 
 class WhyChooseUsSection extends StatelessWidget {
   const WhyChooseUsSection({super.key});
@@ -38,67 +41,59 @@ class WhyChooseUsSection extends StatelessWidget {
         final double subtitleFontSize = isMobile ? 14 : 16;
         final double sectionSpacing = isMobile ? 20 : 30;
 
-        return Column(
-          children: [
-            Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: horizontalMargin,
-                vertical: 11,
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    "Why Choose Us",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: titleFontSize,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 6),
-                  Text(
-                    "Discover the reasons why Tannu Tour and Travels is the best choice for your travel needs.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black.withValues(alpha: 0.9),
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: horizontalMargin,
+                  vertical: 11,
+                ),
+                child: Column(
+                  children: [
+                    MyTitle(title: "Why Choose Us", fontSize: titleFontSize),
+                    SizedBox(height: 6),
+                    MySubtitle(
+                      title:
+                          "Discover the reasons why Tannu Tour and Travels is the best choice for your travel needs.",
                       fontSize: subtitleFontSize,
-                      fontWeight: FontWeight.w500,
                     ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: sectionSpacing),
+
+              Wrap(
+                alignment: WrapAlignment.center,
+                runSpacing: 15,
+                spacing: 15,
+                children: [
+                  _detailCard(
+                    Icons.shield_outlined,
+                    contentList[0][0],
+                    contentList[0][1],
+                  ),
+                  _detailCard(
+                    Icons.attach_money_outlined,
+                    contentList[1][0],
+                    contentList[1][1],
+                  ),
+                  _detailCard(
+                    Icons.drive_eta_outlined,
+                    contentList[2][0],
+                    contentList[2][1],
+                  ),
+                  _detailCard(
+                    Icons.watch_later_outlined,
+                    contentList[3][0],
+                    contentList[3][1],
                   ),
                 ],
               ),
-            ),
-
-            SizedBox(height: sectionSpacing),
-
-            Wrap(
-              alignment: WrapAlignment.center,
-              runSpacing: 11,
-              spacing: 11,
-              children: [
-                _detailCard(
-                  Icons.shield_outlined,
-                  contentList[0][0],
-                  contentList[0][1],
-                ),
-                _detailCard(
-                  Icons.attach_money_outlined,
-                  contentList[1][0],
-                  contentList[1][1],
-                ),
-                _detailCard(
-                  Icons.thumb_up_outlined,
-                  contentList[2][0],
-                  contentList[2][1],
-                ),
-                _detailCard(
-                  Icons.watch_later_outlined,
-                  contentList[3][0],
-                  contentList[3][1],
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         );
       },
     );
@@ -106,37 +101,32 @@ class WhyChooseUsSection extends StatelessWidget {
 
   dynamic _detailCard(IconData icon, String title, String subtitle) {
     return Container(
-      width: 250,
+      width: 300,
       height: 210,
       padding: EdgeInsets.fromLTRB(18, 11, 18, 11),
-      // constraints: BoxConstraints(minWidth: 300, maxWidth: 400),
       decoration: BoxDecoration(
-        color: Colors.amber,
+        color: primaryColor.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(11),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: Colors.blue),
+          Icon(icon, color: primaryColor, size: 40),
+
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2),
+            padding: const EdgeInsets.fromLTRB(0, 11, 0, 2),
             child: Text(
               title,
               style: TextStyle(
                 color: Colors.black.withValues(alpha: 1),
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.w600,
               ),
             ),
           ),
           Text(
             subtitle,
-            style: TextStyle(
-              color: Colors.black.withValues(alpha: 0.9),
-              // fontSize: 16,
-              // fontWeight: FontWeight.w600,
-            ),
+            style: TextStyle(color: Colors.black.withValues(alpha: 0.9)),
             textAlign: TextAlign.center,
           ),
         ],

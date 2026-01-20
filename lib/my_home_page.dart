@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ServingAllAcrossIndiaSection(),
             SizedBox(height: 20),
             WhyChooseUsSection(),
-            SizedBox(height: 20),
+            SizedBox(height: 50),
             PopularDestinationsSection(),
             SizedBox(height: 20),
             SizedBox(height: 100),

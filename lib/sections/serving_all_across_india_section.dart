@@ -157,7 +157,7 @@ class _ServingAllAcrossIndiaSectionState
               ClipRRect(
                 borderRadius: BorderRadius.circular(isMobile ? 12 : 18),
                 child: Image.asset(
-                  "assets/images/locations/photo(1).jpg",
+                  "assets/images/locations/indiaMap.jpg",
                   fit: BoxFit.cover,
                 ),
               ),
