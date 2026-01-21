@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tannu_tour_and_travels/utils/colors.dart';
 import 'package:tannu_tour_and_travels/utils/devices_breakpoints.dart';
 import 'package:tannu_tour_and_travels/widgets/my_subtitle.dart';
 import 'package:tannu_tour_and_travels/widgets/my_title.dart';
@@ -24,7 +23,7 @@ class CustomerReview extends StatelessWidget {
       ],
       [
         "Sneha Reddy, Bangalore",
-        "Very reliable and punctual service. Very reliable and punctual service.",
+        "Excellent service! The bus was clean, comfortable, and the driver was very professional. Highly recommended for group tours.",
       ],
     ];
 
@@ -41,8 +40,9 @@ class CustomerReview extends StatelessWidget {
         final double subtitleFontSize = isMobile ? 14 : 16;
         final double sectionSpacing = isMobile ? 20 : 30;
 
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18),
+        return Container(
+          color: Colors.grey.withValues(alpha: 0.1),
+          width: double.infinity,
           child: Column(
             children: [
               Container(
@@ -52,11 +52,14 @@ class CustomerReview extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    MyTitle(title: "Why Choose Us", fontSize: titleFontSize),
+                    MyTitle(
+                      title: "What Our Customers Say",
+                      fontSize: titleFontSize,
+                    ),
                     SizedBox(height: 6),
                     MySubtitle(
                       title:
-                          "Discover the reasons why Tannu Tour and Travels is the best choice for your travel needs.",
+                          "Read what our satisfied customers have to say about their experiences with Journey Travel Company.",
                       fontSize: subtitleFontSize,
                     ),
                   ],
@@ -76,6 +79,8 @@ class CustomerReview extends StatelessWidget {
                   _detailCard(contentList[3][0], contentList[3][1], true),
                 ],
               ),
+
+              SizedBox(height: 22),
             ],
           ),
         );
@@ -84,55 +89,69 @@ class CustomerReview extends StatelessWidget {
   }
 
   dynamic _detailCard(String title, String subtitle, bool halfStar) {
-    return Container(
-      width: 300,
-      height: 240,
-      padding: EdgeInsets.fromLTRB(18, 11, 18, 11),
-      decoration: BoxDecoration(
-        color: primaryColor.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(11),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Icon(Icons.arrow_circle_down, color: primaryColor, size: 40),
+    return Card(
+      child: Container(
+        width: 300,
+        height: 240,
+        padding: EdgeInsets.fromLTRB(18, 11, 18, 11),
+        decoration: BoxDecoration(
+          color: Colors.white.withValues(alpha: 1),
+          borderRadius: BorderRadius.circular(11),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset("assets/images/quote.png", height: 40),
 
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 18, 0, 8),
-            child: Text(
-              subtitle,
-              style: TextStyle(color: Colors.black, fontSize: 16),
-              textAlign: TextAlign.center,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+              child: Text(
+                subtitle,
+                style: TextStyle(color: Colors.black, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.star, color: const Color.fromARGB(255, 243, 223, 46)),
-              Icon(Icons.star, color: const Color.fromARGB(255, 243, 223, 46)),
-              Icon(Icons.star, color: const Color.fromARGB(255, 243, 223, 46)),
-              Icon(Icons.star, color: const Color.fromARGB(255, 243, 223, 46)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.star,
+                  color: const Color.fromARGB(255, 243, 223, 46),
+                ),
+                Icon(
+                  Icons.star,
+                  color: const Color.fromARGB(255, 243, 223, 46),
+                ),
+                Icon(
+                  Icons.star,
+                  color: const Color.fromARGB(255, 243, 223, 46),
+                ),
+                Icon(
+                  Icons.star,
+                  color: const Color.fromARGB(255, 243, 223, 46),
+                ),
 
-              halfStar
-                  ? Icon(
-                      Icons.star_half,
-                      color: const Color.fromARGB(255, 243, 223, 46),
-                    )
-                  : Icon(
-                      Icons.star,
-                      color: const Color.fromARGB(255, 243, 223, 46),
-                    ),
-            ],
-          ),
+                halfStar
+                    ? Icon(
+                        Icons.star_half,
+                        color: const Color.fromARGB(255, 243, 223, 46),
+                      )
+                    : Icon(
+                        Icons.star,
+                        color: const Color.fromARGB(255, 243, 223, 46),
+                      ),
+              ],
+            ),
 
-          SizedBox(height: 8),
+            SizedBox(height: 8),
 
-          Text(
-            title,
-            style: TextStyle(color: Colors.black.withValues(alpha: 0.9)),
-          ),
-        ],
+            Text(
+              title,
+              style: TextStyle(color: Colors.black.withValues(alpha: 0.9)),
+            ),
+          ],
+        ),
       ),
     );
   }

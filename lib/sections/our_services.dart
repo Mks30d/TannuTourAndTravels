@@ -40,24 +40,15 @@ class OurServices extends StatelessWidget {
               name: "Dezire",
               seats: "5",
               image: "assets/images/vehicles/dzire.jpg",
-              color: Colors.blue,
+              color: Colors.green,
             ),
             carCard(
               name: "Innova",
               seats: "7-8",
               image: "assets/images/vehicles/innova.jpg",
-              color: Colors.green,
+              color: Colors.blue,
             ),
-          ],
-        ),
-
-        SizedBox(height: 22),
-
-        Wrap(
-          spacing: 15,
-          runSpacing: 15,
-          alignment: WrapAlignment.center,
-          children: [
+         
             carCard(
               name: "Crysta",
               seats: "4",
@@ -68,7 +59,7 @@ class OurServices extends StatelessWidget {
               name: "Luxury Car",
               seats: "4",
               image: "assets/images/vehicles/audi.jpg",
-              color: Colors.yellow,
+              color: Colors.teal,
             ),
             carCard(
               name: "Mini Bus",
@@ -112,7 +103,7 @@ class OurServices extends StatelessWidget {
         child: Container(
           constraints: BoxConstraints(maxWidth: 300),
           height: 245,
-          color: color,
+          color: color.withValues(alpha: 0.8),
           child: Column(
             children: [
               SizedBox(
