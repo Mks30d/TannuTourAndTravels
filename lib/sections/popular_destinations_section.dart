@@ -8,43 +8,39 @@ class PopularDestinationsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> images = [
-      "assets/images/locations/photo(2).jpg",
-      "assets/images/locations/photo(3).jpg",
-      "assets/images/locations/photo(4).jpg",
-      "assets/images/locations/photo(5).jpg",
-      "assets/images/locations/photo(6).jpg",
-      "assets/images/locations/photo(7).jpg",
-    ];
-
     List<List<String>> contentList = [
       [
-        "image",
+        "assets/images/locations/photo(7).jpg",
         "Agra - Taj Mahal",
         "Visit the iconic symbol Of love",
         "~ 230 km from Delhi",
       ],
       [
-        "image",
+        "assets/images/locations/photo(6).jpg",
         "Goa Beaches",
         "Relax on pristine beaches",
         "~ 600 km from Mumbai",
       ],
       [
-        "image",
+        "assets/images/locations/photo(5).jpg",
         "Jaipur - Pink City",
         "Explore royal palaces and forts",
         "~ 280 km from Delhi",
       ],
       [
-        "image",
+        "assets/images/locations/photo(3).jpg",
         "Shimla",
         "Colonial charm and mountain views",
         "~ 350 km from Delhi",
       ],
-      ["image", "Manali", "Adventure in the Himalayas", "~ 550 km from Delhi"],
       [
-        "image",
+        "assets/images/locations/photo(2).jpg",
+        "Manali",
+        "Adventure in the Himalayas",
+        "~ 550 km from Delhi",
+      ],
+      [
+        "assets/images/locations/photo(4).jpg",
         "Kerala Backwaters",
         "Experience serene waterways",
         "~ 700 km from Bangalore",
@@ -74,37 +70,37 @@ class PopularDestinationsSection extends StatelessWidget {
                 title: contentList[0][1],
                 subtitle: contentList[0][2],
                 distance: contentList[0][3],
-                image: images[0],
+                image: contentList[0][0],
               ),
               _destinationCard(
                 title: contentList[1][1],
                 subtitle: contentList[1][2],
                 distance: contentList[1][3],
-                image: images[1],
+                image: contentList[1][0],
               ),
               _destinationCard(
                 title: contentList[2][1],
                 subtitle: contentList[2][2],
                 distance: contentList[2][3],
-                image: images[2],
+                image: contentList[2][0],
               ),
               _destinationCard(
                 title: contentList[3][1],
                 subtitle: contentList[3][2],
                 distance: contentList[3][3],
-                image: images[3],
+                image: contentList[3][0],
               ),
               _destinationCard(
                 title: contentList[4][1],
                 subtitle: contentList[4][2],
                 distance: contentList[4][3],
-                image: images[4],
+                image: contentList[4][0],
               ),
               _destinationCard(
                 title: contentList[5][1],
                 subtitle: contentList[5][2],
                 distance: contentList[5][3],
-                image: images[5],
+                image: contentList[5][0],
               ),
             ],
           ),
