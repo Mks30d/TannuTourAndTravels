@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tannu_tour_and_travels/sections/book_journey_form.dart';
 import 'package:tannu_tour_and_travels/utils/devices_breakpoints.dart';
 import 'package:tannu_tour_and_travels/widgets/my_subtitle.dart';
 import 'package:tannu_tour_and_travels/widgets/my_title.dart';
@@ -30,10 +31,7 @@ class BookYourJourney extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  MyTitle(
-                    title: "Book Your Journey",
-                    fontSize: titleFontSize,
-                  ),
+                  MyTitle(title: "Book Your Journey", fontSize: titleFontSize),
                   SizedBox(height: 6),
                   MySubtitle(
                     title:
@@ -43,9 +41,11 @@ class BookYourJourney extends StatelessWidget {
                 ],
               ),
             ),
-        
+
             SizedBox(height: sectionSpacing),
-        
+
+            BookJourneyForm(),
+
             SizedBox(height: 22),
           ],
         );
