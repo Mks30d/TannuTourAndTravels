@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tannu_tour_and_travels/utils/colors.dart';
 
 class BookJourneyForm extends StatefulWidget {
   const BookJourneyForm({super.key});
@@ -43,7 +44,7 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: Colors.blue),
+        borderSide: BorderSide(color: primaryColor),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10),
@@ -56,7 +57,6 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.reset();
-      // ✅ All validations passed
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Inquiry submitted successfully')),
       );
@@ -67,7 +67,10 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 450,
+        // width: 450,
+        constraints: BoxConstraints(
+          // minWidth: 450,
+         maxWidth: 600),
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -85,17 +88,6 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Book Your Journey',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 6),
-              const Text(
-                'Fill out the form below and we’ll get back to you with the best options for your trip.',
-                style: TextStyle(color: Colors.grey),
-              ),
-              const SizedBox(height: 20),
-
               /// Full Name
               TextFormField(
                 controller: _nameController,
@@ -104,8 +96,8 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
                   if (value == null || value.trim().isEmpty) {
                     return 'Full name is required';
                   }
-                  if (value.trim().length < 3) {
-                    return 'Name must be at least 3 characters';
+                  if (value.trim().length < 2) {
+                    return 'Name must be at least 2 characters';
                   }
                   return null;
                 },
@@ -184,7 +176,7 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
                 maxLines: 4,
                 decoration: _inputDecoration('Message / Special Requirements'),
                 validator: (value) {
-                  if (value != null && value.isNotEmpty && value.length < 10) {
+                  if (value != null && value.isNotEmpty && value.length < 5) {
                     return 'Message should be at least 10 characters';
                   }
                   return null;
@@ -199,14 +191,14 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
                 child: ElevatedButton(
                   onPressed: _submitForm,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   child: const Text(
                     'Submit Inquiry →',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               ),

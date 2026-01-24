@@ -48,12 +48,18 @@ class OurServices extends StatelessWidget {
               image: "assets/images/vehicles/innova.jpg",
               color: Colors.blue,
             ),
-         
+
             carCard(
               name: "Crysta",
               seats: "4",
               image: "assets/images/vehicles/crysta.jpg",
               color: Colors.yellow,
+            ),
+            carCard(
+              name: "SUV",
+              seats: "5-7",
+              image: "assets/images/vehicles/suv.jpg",
+              color: Colors.cyan,
             ),
             carCard(
               name: "Luxury Car",
