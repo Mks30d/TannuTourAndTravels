@@ -1,0 +1,45 @@
+name: Build & Deploy Flutter Web
+
+on:
+  push:
+    branches:
+      - main # Trigger only when main is updated
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout main branch
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2️⃣ Set up Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.35.2"
+          channel: stable
+
+      # 3️⃣ Enable web support
+      - name: Enable Flutter Web
+        run: flutter config --enable-web
+
+      # 4️⃣ Get dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 5️⃣ Build web
+      - name: Build Flutter Web
+        run: flutter build web --release
+
+      # 6️⃣ Deploy to web branch
+      - name: Deploy to web branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: web
+          publish_dir: build/web
+          force_orphan: true
