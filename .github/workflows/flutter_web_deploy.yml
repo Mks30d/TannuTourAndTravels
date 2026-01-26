@@ -36,7 +36,8 @@ jobs:
 
       # 5️⃣ Build web
       - name: Build Flutter Web
-        run: flutter build web --release
+        run: flutter build web --release --base-href "/TannuTourAndTravels/"
+
 
       # 6️⃣ Deploy to web branch
       - name: Deploy to web branch
