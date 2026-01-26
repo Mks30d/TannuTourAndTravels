@@ -5,6 +5,9 @@ on:
     branches:
       - main # Trigger only when main is updated
 
+permissions:
+  contents: write   # REQUIRED to push to web branch
+
 jobs:
   build:
     runs-on: ubuntu-latest
