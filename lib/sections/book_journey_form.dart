@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tannu_tour_and_travels/utils/colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookJourneyForm extends StatefulWidget {
   const BookJourneyForm({super.key});
@@ -54,12 +55,34 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
     );
   }
 
-  void _submitForm() {
+  Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.reset();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Inquiry submitted successfully')),
-      );
+      // await sendToWhatsApp();
+
+      // _formKey.currentState!.reset();
+    }
+  }
+
+  /// WhatsApp number (country code required)
+  final String whatsAppNumber = "7897739391";
+
+  Future<void> sendToWhatsApp() async {
+    final message =
+        """
+Hello 👋
+Travel enquiry:
+Name: ${_nameController.text.trim()}
+Email: ${_emailController.text.trim()}
+📍 From: ${_fromController.text.trim()}
+📍 To: ${_toController.text.trim()}
+Message: ${_messageController.text.trim()}
+""";
+
+    final encoded = Uri.encodeComponent(message);
+    final url = Uri.parse("https://wa.me/$whatsAppNumber?text=$encoded");
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
     }
   }
 
@@ -70,7 +93,8 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
         // width: 450,
         constraints: BoxConstraints(
           // minWidth: 450,
-         maxWidth: 600),
+          maxWidth: 600,
+        ),
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -110,10 +134,12 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: _inputDecoration('Email Address'),
                 validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Email is required';
-                  }
-                  if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                  // if (value == null || value.trim().isEmpty) {
+                  //   return 'Email is required';
+                  // }
+                  if (value != null &&
+                      value.isNotEmpty &&
+                      !RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
                     return 'Enter a valid email';
                   }
                   return null;
@@ -140,6 +166,7 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
 
               /// From & To
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: TextFormField(
@@ -193,7 +220,7 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(11),
                     ),
                   ),
                   child: const Text(
