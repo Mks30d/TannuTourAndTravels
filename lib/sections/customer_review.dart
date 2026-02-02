@@ -68,16 +68,20 @@ class CustomerReview extends StatelessWidget {
 
               SizedBox(height: sectionSpacing),
 
-              Wrap(
-                alignment: WrapAlignment.center,
-                runSpacing: 15,
-                spacing: 15,
-                children: [
-                  _detailCard(contentList[0][0], contentList[0][1], false),
-                  _detailCard(contentList[1][0], contentList[1][1], true),
-                  _detailCard(contentList[2][0], contentList[2][1], false),
-                  _detailCard(contentList[3][0], contentList[3][1], true),
-                ],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: horizontalMargin,
+                ),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  runSpacing: 15,
+                  spacing: 15,
+                  children: [
+                    _detailCard(contentList[0][0], contentList[0][1], false),
+                    _detailCard(contentList[1][0], contentList[1][1], true),
+                    _detailCard(contentList[2][0], contentList[2][1], false),
+                    _detailCard(contentList[3][0], contentList[3][1], true),
+                  ],
+                ),
               ),
 
               SizedBox(height: 22),

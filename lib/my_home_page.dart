@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tannu_tour_and_travels/sections/animated_section.dart';
 import 'package:tannu_tour_and_travels/sections/book_your_journey.dart';
 import 'package:tannu_tour_and_travels/sections/customer_review.dart';
+import 'package:tannu_tour_and_travels/sections/footer.dart';
 import 'package:tannu_tour_and_travels/sections/header.dart';
 import 'package:tannu_tour_and_travels/sections/serving_all_across_india_section.dart';
 import 'package:tannu_tour_and_travels/sections/our_services.dart';
@@ -37,6 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
             CustomerReview(),
             SizedBox(height: 30),
             BookYourJourney(),
+            SizedBox(height: 20),
+            Footer(),
             SizedBox(height: 30),
             SizedBox(height: 100),
           ],
