@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tannu_tour_and_travels/widgets/my_subtitle.dart';
+import 'package:tannu_tour_and_travels/widgets/my_title.dart';
 
 class OurServices extends StatelessWidget {
   const OurServices({super.key});
@@ -9,18 +11,11 @@ class OurServices extends StatelessWidget {
 
     return Column(
       children: [
-        Text(
-          "Our Services",
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-        ),
+        MyTitle(title: "Our Services", fontSize: 35),
 
-        Text(
-          "Let's start your journey with us, your dream will come true",
-          style: TextStyle(
-            color: Colors.black.withValues(alpha: 0.9),
-            fontSize: 16,
-            // fontWeight: FontWeight.w600,
-          ),
+        MySubtitle(
+          title: "Let's start your journey with us, your dream will come true",
+          fontSize: 16,
         ),
 
         SizedBox(height: 22),

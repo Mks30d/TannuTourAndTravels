@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tannu_tour_and_travels/utils/devices_breakpoints.dart';
+import 'package:tannu_tour_and_travels/widgets/my_subtitle.dart';
+import 'package:tannu_tour_and_travels/widgets/my_title.dart';
 
 class ServingAllAcrossIndiaSection extends StatefulWidget {
   const ServingAllAcrossIndiaSection({super.key});
@@ -70,25 +72,17 @@ class _ServingAllAcrossIndiaSectionState
                 ),
                 child: Column(
                   children: [
-                    Text(
-                      "Serving All Across India",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: titleFontSize,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    MyTitle(
+                      title: "Serving All Across India",
+                      fontSize: titleFontSize,
                     ),
-                    SizedBox(height: 6),
-                    Text(
-                      "From Kashmir to Kanyakumari, Kutch to Kohima - Tannu Tour and Travels provides reliable transportation services throughout India",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black.withValues(alpha: 0.9),
-                        fontSize: subtitleFontSize,
-                        fontWeight: FontWeight.w500,
-                      ),
+
+                    MySubtitle(
+                      title:
+                          "From Kashmir to Kanyakumari, Kutch to Kohima - Tannu Tour and Travels provides reliable transportation services throughout India",
+                      fontSize: subtitleFontSize,
                     ),
-                  ],
+                    ],
                 ),
               ),
 

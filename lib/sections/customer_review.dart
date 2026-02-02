@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tannu_tour_and_travels/utils/colors.dart';
 import 'package:tannu_tour_and_travels/utils/devices_breakpoints.dart';
 import 'package:tannu_tour_and_travels/widgets/my_subtitle.dart';
 import 'package:tannu_tour_and_travels/widgets/my_title.dart';
@@ -41,7 +42,8 @@ class CustomerReview extends StatelessWidget {
         final double sectionSpacing = isMobile ? 20 : 30;
 
         return Container(
-          color: Colors.grey.withValues(alpha: 0.1),
+          // color: Colors.grey.withValues(alpha: 0.1),
+          color: primaryColor.withValues(alpha: 0.8),
           width: double.infinity,
           child: Column(
             children: [
@@ -55,12 +57,14 @@ class CustomerReview extends StatelessWidget {
                     MyTitle(
                       title: "What Our Customers Say",
                       fontSize: titleFontSize,
+                      color: Colors.white,
                     ),
                     SizedBox(height: 6),
                     MySubtitle(
                       title:
-                          "Read what our satisfied customers have to say about their experiences with Journey Travel Company.",
+                          "Read what our satisfied customers have to say about their experiences.",
                       fontSize: subtitleFontSize,
+                      color: Colors.white,
                     ),
                   ],
                 ),
