@@ -57,9 +57,9 @@ class _BookJourneyFormState extends State<BookJourneyForm> {
 
   Future<void> _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      // await sendToWhatsApp();
+      await sendToWhatsApp();
 
-      // _formKey.currentState!.reset();
+      _formKey.currentState!.reset();
     }
   }
 

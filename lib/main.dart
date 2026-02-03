@@ -16,7 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
       ),
-      home: const MyHomePage(),
+      home: InteractiveViewer(
+        panEnabled: true,
+        scaleEnabled: true,
+        minScale: 0.8,
+        maxScale: 2.5,
+        child: MyHomePage(),
+      ),
     );
   }
 }

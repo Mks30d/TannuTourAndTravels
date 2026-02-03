@@ -166,8 +166,8 @@ class PopularDestinationsSection extends StatelessWidget {
                     Row(
                       children: [
                         Icon(
-                          Icons.pin_drop_outlined,
-                          size: 20,
+                          Icons.location_on_outlined,
+                          size: 18,
                           color: primaryColor,
                         ),
                         SizedBox(width: 5),

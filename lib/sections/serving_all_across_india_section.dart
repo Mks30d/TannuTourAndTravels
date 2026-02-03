@@ -282,7 +282,7 @@ class _ServingAllAcrossIndiaSectionState
               children: [
                 Row(
                   children: [
-                    Icon(Icons.pin_drop_outlined, size: isMobile ? 20 : 24),
+                    Icon(Icons.location_on_outlined, size: isMobile ? 18 : 20),
                     SizedBox(width: 6),
                     Expanded(
                       child: Text(
